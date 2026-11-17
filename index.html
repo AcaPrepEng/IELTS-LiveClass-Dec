@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#E4ECFB;font-family:'Be Vietnam Pro',system-ui,sans-serif;color:#1D2B4A;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  a{color:#1F3864}
+  a:hover{color:#C05621}
+  @keyframes tlFade{from{opacity:0}to{opacity:1}}
+  @keyframes tlPop{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+  @media (max-width:1180px){
+    .tl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:10px}
+    .tl-inner{min-width:1100px}
+  }
+  @media (max-width:820px){
+    .tl-pad{padding:20px 12px 60px !important}
+    .tl-hero{padding:30px 20px 26px !important}
+    .tl-hero h1{font-size:28px !important}
+    .tl-hero-sub{font-size:15px !important}
+    .tl-stats{padding:20px 18px 4px !important;gap:14px !important}
+    .tl-tracks{padding:18px 18px 0 !important;grid-template-columns:1fr !important;gap:14px !important}
+    .tl-cta{padding:24px 20px 30px !important}
+    .tl-cta button{width:100%}
+    .tl-cta > div:first-child{width:100%;flex-direction:column;gap:10px !important}
+    .tl-rules-row{grid-template-columns:1fr !important;gap:6px !important;padding:14px 18px !important}
+    .tl-rules-no{display:none}
+    .tl-modal{padding:12px !important}
+    .tl-modal-head{padding:20px !important}
+    .tl-modal-head h2{font-size:19px !important}
+    .tl-modal-body{padding:20px 20px 26px !important}
+    .tl-page-title{font-size:24px !important}
+  }
+</style>
+</helmet>
+
+<sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+<div class="tl-pad" data-screen-label="Giới thiệu chương trình" style="min-height:100vh;padding:56px 32px 72px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+  <div style="width:100%;max-width:1060px;">
+    <div style="background:#fff;border:1px solid #D6E0F3;border-radius:24px;box-shadow:0 16px 40px rgba(40,70,140,.08);overflow:hidden;">
+      <div class="tl-hero" style="background:#4A86F2;padding:44px 48px 40px;text-align:center;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#FFD34D;">Prep · Live Class</div>
+        <h1 style="margin:12px 0 0;font-size:44px;line-height:1.12;font-weight:800;letter-spacing:-.015em;color:#FFFFFF;text-transform:uppercase;">Khóa IELTS Live Class</h1><div style="margin:16px auto 0;width:72px;height:5px;border-radius:3px;background:#F7B500;"></div>
+      </div>
+
+      <div style="padding:34px 40px 0;text-align:center;font-size:13px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#2F6BE8;">02 levels lựa chọn</div>
+      <div class="tl-tracks" style="padding:14px 40px 0;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:720px;margin:0 auto;">
+        <div style="background:#F0F5FF;border:1px solid #B4CAF6;border-radius:14px;padding:20px 22px;text-align:center;">
+          <div style="font-size:12px;font-weight:800;letter-spacing:.16em;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #B4CAF6;text-transform:uppercase;color:#2458C8;">Essential</div>
+          <div style="font-size:15px;font-weight:700;color:#163172;line-height:1.5;">Thứ Hai &amp; Thứ Tư</div>
+          <div style="margin-top:6px;font-size:14px;font-weight:500;color:#163172;line-height:1.55;text-wrap:pretty;">Dành cho học viên cần vững kiến thức IELTS cơ bản</div>
+        </div>
+        <div style="background:#F3F1FE;border:1px solid #C5BEF4;border-radius:14px;padding:20px 22px;text-align:center;">
+          <div style="font-size:12px;font-weight:800;letter-spacing:.16em;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #C5BEF4;text-transform:uppercase;color:#4B3FB8;">Exam Ready</div>
+          <div style="font-size:15px;font-weight:700;color:#2E2475;line-height:1.5;">Thứ Ba &amp; Thứ Năm</div>
+          <div style="margin-top:6px;font-size:14px;font-weight:500;color:#2E2475;line-height:1.55;text-wrap:pretty;">Dành cho học viên IELTS 5.0+, tăng tốc điểm lên 6.5+</div>
+        </div>
+      </div>
+
+      <div style="padding:34px 40px 0;text-align:center;font-size:13px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#2F6BE8;">Thời lượng chương trình</div>
+      <div class="tl-stats" style="padding:14px 40px 6px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:720px;margin:0 auto;">
+        <div style="background:#FFF6DC;border:1px solid #F5D77A;border-radius:14px;padding:20px 30px 22px;text-align:center;">
+          <div style="font-size:30px;font-weight:800;color:#1B3A7A;line-height:1.1;white-space:nowrap;">20:00 – 21:30</div>
+          <div style="margin-top:8px;font-size:14px;font-weight:600;color:#4A5F8C;line-height:1.4;">90 phút/buổi</div>
+        </div>
+        <div style="background:#FFF6DC;border:1px solid #F5D77A;border-radius:14px;padding:20px 30px 22px;text-align:center;">
+          <div style="font-size:30px;font-weight:800;color:#1B3A7A;line-height:1.1;white-space:nowrap;">08 buổi</div>
+          <div style="margin-top:8px;font-size:14px;font-weight:600;color:#4A5F8C;line-height:1.4;">mỗi level</div>
+        </div>
+      </div>
+
+      <div class="tl-cta" style="padding:44px 40px 44px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+        <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+          <button onClick="{{ goTable }}" style="border:none;cursor:pointer;background:#2F6BE8;color:#fff;font-family:inherit;font-size:16px;font-weight:700;letter-spacing:.02em;padding:16px 38px;border-radius:999px;box-shadow:0 10px 24px rgba(47,107,232,.28);transition:transform .15s ease,background .15s ease;" style-hover="background:#2458C8;transform:translateY(-2px)">Lịch học chi tiết →</button>
+          <button onClick="{{ goRules }}" style="border:2px solid #2F6BE8;cursor:pointer;background:#fff;color:#2F6BE8;font-family:inherit;font-size:16px;font-weight:700;letter-spacing:.02em;padding:14px 34px;border-radius:999px;transition:transform .15s ease,background .15s ease;" style-hover="background:#EEF3FE;transform:translateY(-2px)">Nội quy lớp →</button>
+        </div>
+        <div style="font-size:13px;color:#7D8BA8;">Chạm vào từng buổi trong lịch để xem chi tiết</div>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isRules }}" hint-placeholder-val="{{ false }}">
+<div class="tl-pad" data-screen-label="Nội quy lớp" style="min-height:100vh;padding:44px 32px 80px;display:flex;flex-direction:column;align-items:center;">
+  <div style="width:100%;max-width:1000px;">
+    <button onClick="{{ goIntro }}" style="border:1px solid #CFDDFB;cursor:pointer;background:#fff;color:#2F6BE8;font-family:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;transition:background .15s ease;" style-hover="background:#EEF3FE">← Về trang giới thiệu</button>
+    <div style="text-align:center;padding:26px 0 24px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#3B76E8;">Prep · Live Class</div>
+      <h1 class="tl-page-title" style="margin:10px 0 0;font-size:34px;line-height:1.2;font-weight:800;color:#2F6BE8;text-transform:uppercase;">Nội quy lớp IELTS Live Class</h1>
+      <div style="margin-top:10px;font-size:15px;color:#5B6B8C;">Áp dụng cho cả 2 lộ trình — vui lòng đọc kỹ trước buổi học đầu tiên</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px;">
+      <sc-for list="{{ ruleGroups }}" as="g" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid #D6E0F3;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(40,70,140,.08);">
+          <div style="background:{{ g.bg }};color:{{ g.color }};padding:14px 24px;font-size:15px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;">{{ g.label }}</div>
+          <sc-for list="{{ g.items }}" as="r" hint-placeholder-count="5">
+            <div class="tl-rules-row" style="display:grid;grid-template-columns:44px 210px 1fr;gap:16px;padding:16px 24px;border-top:1px solid #E9EEF7;align-items:start;">
+              <div class="tl-rules-no" style="font-size:14px;font-weight:800;color:{{ g.color }};">{{ r.no }}</div>
+              <div style="font-size:15px;font-weight:700;color:#1D2F5A;line-height:1.5;">{{ r.title }}</div>
+              <div>
+                <div style="font-size:15px;line-height:1.65;color:#3A4A6B;white-space:pre-line;">{{ r.text }}</div>
+                <sc-if value="{{ r.note }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:8px;display:inline-block;background:{{ g.bg }};color:{{ g.color }};border-radius:8px;padding:6px 12px;font-size:13px;font-weight:600;line-height:1.5;">{{ r.note }}</div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:24px;text-align:center;font-size:13px;color:#7D8BA8;">Mọi thắc mắc về lớp học và bài tập nhắn 100% vào group Zalo chung của lớp · phản hồi 09:00 – 21:00, Thứ Hai – Thứ Bảy</div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTable }}" hint-placeholder-val="{{ false }}">
+<div class="tl-pad" data-screen-label="Lịch học IELTS LIVE CLASS" style="min-height:100vh;padding:44px 32px 80px;display:flex;flex-direction:column;align-items:center;">
+  <div style="width:100%;max-width:1180px;">
+    <button onClick="{{ goIntro }}" style="border:1px solid #CFDDFB;cursor:pointer;background:#fff;color:#2F6BE8;font-family:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;transition:background .15s ease;" style-hover="background:#EEF3FE">← Về trang giới thiệu</button>
+
+    <div style="text-align:center;padding:10px 0 26px;">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:#3B76E8;">Prep · Live Class</div>
+      <h1 class="tl-page-title" style="margin:10px 0 0;font-size:38px;line-height:1.15;font-weight:800;letter-spacing:-.01em;color:#1B3A7A;text-transform:uppercase;">Lịch học IELTS Live Class</h1>
+      <div style="margin-top:10px;font-size:16px;font-style:italic;color:#4A5F8C;">Khai giảng 21/12/2026 · 20:00 – 21:30</div>
+      <div style="margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <button onClick="{{ f.onClick }}" style="{{ f.style }}" style-hover="transform:translateY(-1px)"><span style="width:11px;height:11px;border-radius:3px;background:{{ f.swatch }};"></span>{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <div style="margin-top:12px;font-size:13px;color:#7D8BA8;">Chọn lộ trình để lọc · chạm vào buổi học để xem chi tiết</div>
+    </div>
+
+    <div class="tl-scroll">
+      <div class="tl-inner" style="display:flex;flex-direction:column;gap:28px;">
+        <sc-for list="{{ months }}" as="month" hint-placeholder-count="2">
+          <div style="background:#fff;border:1px solid #D6E0F3;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(40,70,140,.07);">
+            <div style="background:#4A86F2;color:#FFFFFF;text-align:center;padding:13px;font-size:16px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;">{{ month.label }}</div>
+            <div style="display:grid;grid-template-columns:92px repeat(7,minmax(0,1fr));background:#E6EDFD;">
+              <div style="padding:14px 8px;"></div>
+              <sc-for list="{{ weekdays }}" as="wd" hint-placeholder-count="7">
+                <div style="padding:14px 8px;text-align:center;color:#2F6BE8;font-size:14px;font-weight:700;border-left:1px solid #CFDDFB;">{{ wd }}</div>
+              </sc-for>
+            </div>
+            <sc-for list="{{ month.weeks }}" as="week" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:92px repeat(7,minmax(0,1fr));border-top:1px solid #E6ECF6;">
+                <div style="display:flex;align-items:center;justify-content:center;text-align:center;padding:8px 4px;font-size:13px;font-weight:700;line-height:1.5;white-space:pre-line;background:{{ week.timeBg }};color:#1B3A7A;">{{ week.time }}</div>
+                <sc-for list="{{ week.days }}" as="day" hint-placeholder-count="7">
+                  <div style="{{ day.cellStyle }}">
+                    <div style="text-align:right;font-size:13px;font-weight:600;color:{{ day.numColor }};">{{ day.num }}</div>
+                    <sc-if value="{{ day.holiday }}" hint-placeholder-val="{{ false }}">
+                      <div style="margin-top:6px;padding:9px 10px;border-radius:10px;background:#FFF1C2;box-shadow:inset 0 0 0 1px #F5D77A;color:#6E5200;font-size:12px;font-weight:700;line-height:1.42;text-align:center;text-wrap:pretty;">{{ day.holiday }}</div>
+                    </sc-if>
+                    <sc-for list="{{ day.items }}" as="it" hint-placeholder-count="1">
+                      <div onClick="{{ it.onClick }}" style="{{ it.style }}" style-hover="transform:translateY(-4px) scale(1.02);filter:brightness(1.04);box-shadow:0 12px 22px rgba(47,107,232,.22);position:relative;z-index:2">
+                        <div style="font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:{{ it.tagColor }};white-space:nowrap;">{{ it.tag }}</div>
+                        <div style="display:block;margin-top:2px;font-size:10px;font-weight:700;letter-spacing:.04em;color:{{ it.tagColor }};white-space:nowrap;padding-bottom:6px;border-bottom:1px solid {{ it.lineColor }};">{{ it.num }}</div>
+                        <div style="margin-top:6px;font-size:13px;font-weight:600;line-height:1.42;color:{{ it.textColor }};text-wrap:pretty;">{{ it.title }}</div>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="margin-top:22px;text-align:center;font-size:13px;color:#7D8BA8;">Lớp học trực tuyến, có ghi hình lại</div>
+  </div>
+
+  <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ close }}" class="tl-modal" style="position:fixed;inset:0;z-index:50;background:rgba(25,55,120,.38);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px;animation:tlFade .18s ease-out;">
+      <div onClick="{{ stop }}" style="width:min(720px,100%);max-height:88vh;overflow-y:auto;background:#fff;border-radius:16px;box-shadow:0 26px 70px rgba(25,55,120,.28);animation:tlPop .22s cubic-bezier(.2,.8,.3,1);">
+        <div class="tl-modal-head" style="padding:26px 30px;background:{{ sel.headBg }};color:{{ sel.headColor }};position:sticky;top:0;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;">
+            <div>
+              <div style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.8;">{{ sel.kicker }}</div>
+              <h2 style="margin:8px 0 0;font-size:24px;line-height:1.28;font-weight:800;">{{ sel.name }}</h2>
+              <div style="margin-top:10px;font-size:14px;font-weight:600;opacity:.9;">{{ sel.when }}</div>
+            </div>
+            <button onClick="{{ close }}" style="flex:none;width:36px;height:36px;border:none;border-radius:50%;background:rgba(0,0,0,.07);color:inherit;font-size:20px;line-height:1;cursor:pointer;" style-hover="background:rgba(0,0,0,.13)">×</button>
+          </div>
+        </div>
+        <div class="tl-modal-body" style="padding:26px 30px 32px;display:flex;flex-direction:column;gap:12px;">
+          <sc-if value="{{ sel.hasDetail }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:18px;">
+              <div>
+                <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:{{ sel.accent }};padding-bottom:8px;border-bottom:1px solid {{ sel.line }};">Nội dung buổi học</div>
+                <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+                  <sc-for list="{{ sel.learn }}" as="b" hint-placeholder-count="5">
+                    <div style="display:grid;grid-template-columns:14px 1fr;gap:8px;font-size:15px;line-height:1.6;color:#1D2F5A;"><span style="color:{{ sel.accent }};font-weight:800;">•</span><span style="text-wrap:pretty;">{{ b }}</span></div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="background:{{ sel.soft }};border-radius:12px;padding:16px 18px;">
+                <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:{{ sel.accent }};">Sau buổi học, HV có thể</div>
+                <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+                  <sc-for list="{{ sel.outcomes }}" as="b" hint-placeholder-count="4">
+                    <div style="display:grid;grid-template-columns:18px 1fr;gap:6px;font-size:15px;line-height:1.6;color:#1D2F5A;"><span style="color:{{ sel.accent }};font-weight:800;">✓</span><span style="text-wrap:pretty;">{{ b }}</span></div>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ sel.milestone }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:12px;display:inline-flex;gap:8px;align-items:center;background:#FFF1C2;color:#6E5200;border:1px solid #F5D77A;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;">{{ sel.milestone }}</div>
+                </sc-if>
+              </div>
+            </div>
+          </sc-if>
+          
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startScreen&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;intro&quot;,&quot;table&quot;,&quot;rules&quot;],&quot;default&quot;:&quot;intro&quot;,&quot;tsType&quot;:&quot;'intro'|'table'|'rules'&quot;}}">
+const TRACKS = {
+  E:{name:'Essential', bg:'#D9E5FD', border:'#93B2F2', text:'#163172', tag:'#2458C8', head:'#C9DAFB', headText:'#163172', sched:'Thứ Hai & Thứ Tư'},
+  X:{name:'Exam Ready', bg:'#E2DDFB', border:'#A99FEE', text:'#2E2475', tag:'#4B3FB8', head:'#D6CFF9', headText:'#2E2475', sched:'Thứ Ba & Thứ Năm'}
+};
+const LESSONS = [
+  ['2026-12-21','E','Speaking 1','Đừng trả lời cụt — kể thêm một chút'],
+  ['2026-12-23','E','Writing 1','Viết về những gì bạn thấy'],
+  ['2026-12-28','E','Writing 2','Cao hơn, thấp hơn, gấp đôi — nói sao cho gọn?'],
+  ['2026-12-30','E','Speaking 2','2 phút — dài hơn bạn nghĩ'],
+  ['2027-01-04','E','Speaking 3','Phát âm: Người ta có hiểu bạn không?'],
+  ['2027-01-06','E','Writing 3','Bài viết cần một khung xương'],
+  ['2027-01-11','E','Writing 4','Đưa ra ý kiến thôi là chưa đủ'],
+  ['2027-01-13','E','Speaking 4','Nói trôi không phải nói nhanh'],
+  ['2026-12-22','X','Speaking 1','Tại sao nói nhiều mà vẫn thấp điểm?'],
+  ['2026-12-24','X','Writing 1','Task 1: Kể chuyện hay đọc số?'],
+  ['2026-12-29','X','Writing 2','Khi Task 1 không có số nào để viết'],
+  ['2026-12-31','X','Speaking 2','Nghệ thuật kể chuyện trong Speaking Part 2'],
+  ['2027-01-05','X','Speaking 3','Rèn tư duy phản biện'],
+  ['2027-01-07','X','Writing 3','Lập luận như một luật sư'],
+  ['2027-01-12','X','Writing 4','Mỗi dạng đề có một cái bẫy riêng'],
+  ['2027-01-14','X','Speaking 4','Từ vựng band 7 không phải từ ‘to tát’']
+].map(([date,tr,part,title],i)=>({id:i,date,tr,part,title}));
+{
+  const cnt = {};
+  [...LESSONS].sort((a,b)=>a.date.localeCompare(b.date)).forEach(L => {
+    cnt[L.tr] = (cnt[L.tr]||0) + 1;
+    const skill = /^(Writing|Speaking) (\d)/.exec(L.part);
+    if (skill) { L.skill = skill[1]; L.k = +skill[2]; }
+    L.part = 'Buổi ' + cnt[L.tr]; L.n = cnt[L.tr];
+    if (skill) L.title = skill[1] + ': ' + L.title;
+  });
+}
+
+const DETAILS_X = [[["Phân biệt Fluency (nói liền mạch) và Coherence (nói có cấu trúc, ý nối ý)","Bám sát câu hỏi: trả lời trực tiếp trước, mở rộng sau","Signposting: Well, there are a couple of reasons…, First of all…","Discourse markers: on top of that, having said that, as a result","Áp dụng cho Part 1 và Part 2","Platform “jamming session”: 1 topic, 0 giây chuẩn bị, nói 2 phút, tự nghe lại đánh giá Coherence"],["Trả lời trực tiếp vào câu hỏi ngay từ câu đầu","Nói 2 phút không chuẩn bị mà vẫn có cấu trúc rõ","Dùng ít nhất 3 discourse markers đúng chức năng","Tự nghe lại bản ghi và chỉ ra chỗ ý chưa nối mạch"],""],[["Vì sao mô tả tất cả số liệu làm mất điểm Coherence và Task Achievement","Chọn key features: cao nhất / thấp nhất, thay đổi lớn nhất, ngoại lệ","Overview: 2 đặc điểm khái quát nhất của biểu đồ","Nhóm số liệu cho 2 đoạn Body theo xu hướng hoặc theo nhóm đối tượng","Ngôn ngữ highlight: notably, the most striking feature, by contrast","So sánh tỉ lệ chính xác: a third, nearly double, a fourfold increase","Platform: viết full Task 1 trong 20 phút"],["Viết full Task 1 (≥150 từ) trong 20 phút","Viết Overview nêu rõ 2 đặc điểm chính","Chia 2 đoạn Body theo nhóm hợp lý, không liệt kê toàn bộ số liệu","Chọn số liệu dẫn chứng tiêu biểu và so sánh tỉ lệ chính xác"],""],[["Vì sao học thuộc từ vựng trong 1 phút chuẩn bị làm giảm Fluency","Narrative arc: bối cảnh – diễn biến – điểm nút – kết thúc + cảm xúc / suy ngẫm","Ghi note 60 giây theo arc thay vì danh sách từ vựng","Thì kể chuyện: past simple, past continuous (bối cảnh), past perfect (sự việc xảy ra trước)","Ngôn ngữ kể chuyện: all of a sudden, it turned out that, looking back","Platform “topic roulette”: đề ngẫu nhiên, 60 giây plan, nói 2 phút + 1 câu follow-up"],["Lập note theo khung storytelling trong 60 giây","Nói đủ 2 phút theo mạch câu chuyện, không đọc thuộc","Dùng chính xác past continuous và past perfect khi kể","Trả lời câu follow-up mạch lạc ngay sau Part 2"],""],[["Map & Process là dạng bài về ngôn ngữ vị trí và trình tự, không phải số liệu","Map: so sánh trước – sau; ngôn ngữ vị trí (to the north of, adjacent to); động từ thay đổi (was demolished, was replaced by, was converted into, was extended)","Process: xác định điểm đầu – cuối, số bước, quy trình tuyến tính hay tuần hoàn","Bị động: hiện tại đơn cho Process, quá khứ / hiện tại hoàn thành cho Map","Từ nối trình tự: firstly, subsequently, once…, after being…","Overview: thay đổi chính (Map) / tổng số bước (Process)","Platform: viết 1 đề Map hoặc Process trong 20 phút"],["Viết 1 bài Map hoặc Process (≥150 từ) trong 20 phút","Viết Overview đúng trọng tâm của từng dạng","Mô tả đủ key features, không bỏ sót thay đổi / bước quan trọng","Dùng đúng thì bị động theo dạng bài","Dùng ngôn ngữ vị trí và từ nối trình tự chính xác, đa dạng"],""],[["Vì sao luôn đồng ý cho “an toàn” làm mất cơ hội thể hiện ngữ pháp và tư duy","Đặc điểm câu hỏi Part 3: trừu tượng, mang tính xã hội","Nêu góc nhìn nhiều chiều: cá nhân vs xã hội, ngắn hạn vs dài hạn","Ngôn ngữ phản biện: That's a common view, but…; It depends on…","Giả định: Suppose that…, If… were…","Khái quát hóa có kiểm soát: tend to, in many cases, generally speaking","Platform “pressure test”: GV hỏi dồn 5 phút, ghi âm toàn bộ"],["Trả lời câu Part 3 với quan điểm rõ ràng, có lý do và xét chiều ngược lại","Dùng ngôn ngữ phản biện, giả định và khái quát hóa có kiểm soát","Giữ vững hoặc điều chỉnh quan điểm có lý lẽ khi bị hỏi dồn trong 5 phút","Dùng đa dạng câu phức khi lập luận"],""],[["Phát triển sâu 1 ý tốt hơn liệt kê nhiều ý nông","3 hướng phát triển ý: reason – consequence – example, có thể kết hợp 2 trong 3","Kỹ thuật đào sâu: hỏi liên tục “Tại sao? Dẫn đến gì?”","Liên kết câu chủ đề với các câu phát triển, tránh nhảy ý","Ngôn ngữ nhượng bộ & phản biện: Admittedly…, however…; While it is true that…","Platform “Devil's Advocate”: viết 1 body paragraph bảo vệ quan điểm (10′)"],["Viết 1 body paragraph phát triển 1 luận điểm trong 10 phút","Triển khai luận điểm qua ít nhất 2 lớp: lý do / hệ quả / ví dụ","Viết được 1 câu nhượng bộ – phản biện","Giữ mạch lập luận liên tục, không nhảy ý"],""],[["Lexical Resource band 7 là dùng từ tự nhiên, chính xác — không phải từ “to tát”","Collocation theo chủ đề thay cho các cụm nhàm","Idiom an toàn cho Speaking: phù hợp văn nói, tránh slang và thành ngữ cũ","Paraphrase linh hoạt để không lặp từ của examiner","Nhận diện “big word” dùng sai ngữ cảnh","Platform: 1 câu Part 1/Part 3 → trả lời, ghi âm, tự thay 2 từ nhạt bằng collocation tốt hơn"],["Thay 5 cụm từ nhàm bằng collocation / idiom tự nhiên, đúng ngữ cảnh","Paraphrase từ khoá trong câu hỏi thay vì lặp lại","Tránh dùng từ học thuật sai ngữ cảnh khi nói","Tự nghe lại bản ghi và nâng cấp ít nhất 2 từ"],""],[["Vì sao áp một dàn ý cho mọi đề làm mất điểm Task Response","Phân tích đề để nhận diện đúng dạng: Opinion, Discuss both views, đề 2 câu hỏi, Problem – Cause – Solution","Khung thân bài cho từng dạng: Discuss = mỗi body 1 quan điểm + ý kiến cá nhân; đề 2 câu hỏi = mỗi body trả lời 1 câu; Problem – Solution = nguyên nhân/vấn đề và giải pháp","Từ nối phân vùng quan điểm: On the one hand…, Proponents argue that…, Turning to…","Platform: 1 đề dạng khó → viết dàn ý chi tiết + 1 body paragraph"],["Nhận diện đúng dạng đề Task 2","Chọn đúng khung thân bài tương ứng với từng dạng","Lập dàn ý chi tiết trả lời đủ mọi yêu cầu của đề","Viết 1 body paragraph đúng khung và chức năng"],""]];
+const DETAILS_E = [[["Cấu trúc bài Task 1: Introduction – Overview – Body","Introduction: paraphrase đề bằng mẫu câu cố định (The line graph shows / illustrates…)","Overview: chọn 2 đặc điểm nổi bật nhất, viết khái quát, không đưa số liệu (Overall, …)","Ngôn ngữ xu hướng: động từ rise / increase / fall / decrease / remain stable + trạng từ mức độ sharply / slightly / gradually","Giới từ thời gian & số liệu: from… to…, in 2010, by…, at…","Platform: viết Intro + Overview + 2 câu trend cho 1 biểu đồ line/bar (12′)"],["Viết câu Introduction paraphrase đề, không chép nguyên văn","Viết Overview nêu đúng 2 xu hướng chính, không kèm số liệu","Viết 2 câu mô tả xu hướng đúng cấu trúc: động từ + trạng từ + số liệu + giới từ thời gian","Hoàn thành Intro + Overview + 2 câu trend trong 12 phút"],""],[["Vì sao trả lời Yes/No cụt bị mất điểm: examiner không có gì để chấm","Công thức A-R-E: Answer (trả lời trực tiếp) – Reason (lý do) – Example (ví dụ)","Từ nối thêm ý: and also, plus, because, that's why","Thì hiện tại đơn (thói quen) và quá khứ đơn (kể ví dụ, trải nghiệm)","Platform: 2 câu Part 1 → trả lời theo A-R-E, ghi âm, tự kiểm tra đủ 3 phần"],["Trả lời mọi câu Part 1 đủ 3 phần Answer – Reason – Example, không trả lời cụt","Dùng ít nhất 2 từ nối để thêm lý do / ví dụ","Chia đúng hiện tại đơn khi nói thói quen và quá khứ đơn khi kể ví dụ","Tự nghe lại bản ghi và kiểm tra câu trả lời đủ 3 phần chưa"],""],[["Vì sao tả từng cột rời rạc làm mất điểm Coherence → cần nhóm và so sánh số liệu","So sánh hơn / nhất: higher / lower than, the highest / the lowest","So sánh gấp bội: twice / three times as many / much as","So sánh tương đương: similar to, the same as, as… as","Gộp 2–3 đối tượng vào 1 câu so sánh có số liệu dẫn chứng","Platform: 1 bar chart 3 nhóm → viết 3 câu so sánh (12′)"],["Dùng đúng 4–5 cấu trúc so sánh (hơn/nhất, gấp bội, tương đương)","Viết 3 câu so sánh gộp số liệu của các nhóm, có số liệu dẫn chứng","Chọn đúng many / much theo loại danh từ trong cấu trúc gấp bội","Không liệt kê số liệu từng cột một"],""],[["Vì sao đọc thuộc trong Part 2 bị trừ điểm","Cách dùng 1 phút chuẩn bị: ghi 4 từ khoá theo các gạch đầu dòng của cue card, không viết câu","Bộ câu mở: I'd like to talk about…","Từ nối thời gian: at first, then, after that, finally","Câu kết cảm xúc: Overall, I really…","Platform: cue card ngẫu nhiên → 60 giây ghi 4 từ khoá → nói 2 phút, ghi âm"],["Ghi được 4 từ khoá làm dàn ý trong 60 giây chuẩn bị","Nói liên tục 1.5–2 phút theo dàn ý, không đọc thuộc","Trả lời đủ các gạch đầu dòng trong cue card","Mở bài, nối ý và kết bài bằng các mẫu câu đã học"],""],[["Vì sao cần lập dàn ý trước khi viết: tránh lạc đề, thiếu lập trường","Dàn ý 4 đoạn: Introduction – Body 1 – Body 2 – Conclusion","Introduction = paraphrase đề (đổi từ đồng nghĩa, đổi dạng từ, đổi cấu trúc) + thesis nêu lập trường (I believe that… / In my opinion…)","Conclusion = tín hiệu kết bài (In conclusion, To sum up) + nhắc lại lập trường + tóm tắt ý chính, không thêm ý mới","Platform: 1 đề Task 2 → chỉ viết Introduction + Conclusion (12′)"],["Lập dàn ý 4 đoạn cho 1 đề Task 2","Paraphrase câu đề bài, không chép nguyên văn","Viết thesis nêu rõ lập trường","Viết Conclusion nhất quán với thesis, không thêm ý mới","Hoàn thành Introduction + Conclusion trong 12 phút"],""],[["Vì sao phát âm sai lâu không sửa được: chưa nghe lại chính mình","Âm cuối /s/, /z/, /t/, /d/: đuôi -s/-es và -ed","Nguyên âm dài / ngắn dễ nhầm: /iː/ vs /ɪ/ (sheep – ship)","Trọng âm từ: những từ hay dùng trong Speaking","Quy trình tự sửa: ghi âm → nghe lại → đánh dấu từ sai → sửa → ghi âm lại","Platform: 1 câu Part 1 → ghi âm → nghe lại và đánh dấu từ phát âm sai"],["Tự nhận diện 2–3 lỗi phát âm của bản thân từ bản ghi âm","Phát âm rõ âm cuối /s/, /z/, /t/, /d/ ở đuôi -s/-es và -ed","Phân biệt /iː/ và /ɪ/ trong các cặp từ dễ nhầm","Nhấn đúng trọng âm các từ quen thuộc","Sửa được lỗi đã đánh dấu khi ghi âm lại"],""],[["Vì sao viết Task 2 như văn tự do bị mất điểm: thiếu luận điểm rõ ràng","Công thức P-E-E: Point (One reason is… / The main reason is that…) – Explain (This means that…) – Example (For instance…)","Câu chủ đề phải trả lời trực tiếp đề bài","Ví dụ cụ thể, gắn với luận điểm","Từ nối giữa các câu: Moreover, As a result","Platform: 1 đề Opinion → viết 1 body paragraph theo P-E-E (10′)"],["Viết 1 body paragraph đủ 3 phần Point – Explain – Example trong 10 phút","Viết câu chủ đề trả lời đúng đề bài","Đưa ví dụ cụ thể, liên quan trực tiếp tới luận điểm","Dùng ít nhất 2 từ nối đúng chức năng"],""],[["Fluency là nói liền mạch, có liên kết — không phải nói nhanh","Filler tự nhiên thay cho “ờ… ờ…”: Let me think…, Well…, You know…","Từ nối ý cơ bản: and, but, so","Nối âm cơ bản: phụ âm cuối + nguyên âm đầu (an apple, think about it)","Platform: 1 câu Part 1 mở rộng → nói 1 phút không dừng, ghi âm, đếm số lần khựng"],["Nói liên tục 1 phút, khựng không quá 2 lần","Dùng filler tự nhiên thay cho “ờ… ờ…” khi cần thời gian suy nghĩ","Nối ý bằng and, but, so","Áp dụng nối âm ở các cụm từ cơ bản","Giữ tốc độ nói vừa phải, không cố nói nhanh"],""]];
+const RULES = [
+  {label:'Trước buổi học', bg:'#BFD4FB', color:'#163172', items:[
+    {no:'1', title:'Vào lớp đúng giờ', text:'Vào lớp trước giờ học 5–10 phút để ổn định, điểm danh.'},
+    {no:'2', title:'Chuẩn bị thiết bị', text:'Kiểm tra mạng, mic, tai nghe trước.\nƯu tiên dùng laptop/máy tính để làm bài trên hệ thống thuận tiện.', note:'Điện thoại khó thao tác bài tập'},
+    {no:'3', title:'Chuẩn bị học liệu', text:'Chuẩn bị sẵn vở/giấy bút và tài liệu buổi học (nếu có).'},
+    {no:'4', title:'Đổi tên Zoom đúng cú pháp', text:'Đổi tên theo cú pháp: Họ và tên (VD: Nguyễn Minh Anh)', note:'Không đặt tên biệt danh để giáo viên và trợ giảng theo dõi được kết quả học và làm bài'},
+    {no:'5', title:'Tài khoản phù hợp', text:'Dùng tên thật, không dùng nickname/ảnh đại diện phản cảm. Mic để tắt sẵn khi vào lớp.'}
+  ]},
+  {label:'Trong buổi học', bg:'#E3ECFD', color:'#1D3B7C', items:[
+    {no:'1', title:'Quy tắc mic', text:'Luôn tắt mic, chỉ bật khi được GV/TA mời phát biểu.', note:'Giúp lớp đông giữ trật tự'},
+    {no:'2', title:'Quy tắc camera', text:'Khuyến khích bật camera khi được yêu cầu; không để hình ảnh/phông nền gây mất tập trung.'},
+    {no:'3', title:'Tương tác đúng kênh', text:'Đặt câu hỏi qua khung Chat hoặc giơ tay (Raise Hand). TA tổng hợp và chuyển GV ở phần QnA.'},
+    {no:'4', title:'Sử dụng Chat', text:'Chat chỉ dùng cho nội dung học tập; không spam, không nói chuyện riêng, không quảng cáo/link lạ.'},
+    {no:'5', title:'Làm Quiz & bài tập', text:'Làm bài nghiêm túc, đúng thời gian; tự làm, không nhờ làm hộ hoặc chia sẻ đáp án.'},
+    {no:'6', title:'Xử lý lỗi kỹ thuật', text:'Gặp lỗi khi làm bài → nhắn ngay vào group Zalo chung để được hỗ trợ, không tự ý thoát lớp.'},
+    {no:'7', title:'Thắc mắc & hỗ trợ bài tập', text:'Mọi thắc mắc về lớp học, nội dung bài tập, hỗ trợ làm bài: học viên nhắn 100% vào group Zalo chung của lớp để được hỗ trợ nhanh và đầy đủ nhất.', note:'Kênh duy nhất: group Zalo lớp'},
+    {no:'8', title:'Thái độ & tập trung', text:'Tập trung nghe giảng và tham gia các hoạt động của lớp học; hạn chế ra vào nhiều lần; không làm việc riêng/ăn uống gây xao nhãng.'},
+    {no:'9', title:'Tôn trọng', text:'Tôn trọng GV, TA và bạn học; giữ thái độ lịch sự trong mọi tương tác.'},
+    {no:'10', title:'Bảo mật & bản quyền', text:'Không quay màn hình, ghi hình, chụp tài liệu chia sẻ ra ngoài khi chưa được phép. Không chia sẻ link/ID Zoom.'}
+  ]},
+  {label:'Sau buổi học', bg:'#FFF1C2', color:'#6E5200', items:[
+    {no:'1', title:'Hoàn thành bài tập', text:'Hoàn thành bài tập về nhà / bài trên hệ thống đúng hạn.'},
+    {no:'2', title:'Ôn tập & ghi chú', text:'Khuyến khích học viên xem lại các link record buổi Zoom để khái quát và ôn tập lại kiến thức.'},
+    {no:'3', title:'Gửi phản hồi đúng kênh', text:'Gửi thắc mắc/phản hồi về kiến thức, bài tập và sản phẩm qua kênh chính thức là group Zalo chung của lớp (áp dụng 100% các trường hợp).\nThời gian phản hồi: từ 09h00 – 21h00, từ thứ 2 đến thứ 7 hàng tuần (không bao gồm các ngày nghỉ lễ).', note:'100% thắc mắc bài tập/lớp học nhắn vào group Zalo'},
+    {no:'4', title:'Theo dõi thông báo', text:'Theo dõi thông báo về buổi học tiếp theo và tài liệu được gửi.'},
+    {no:'5', title:'Học viên nghỉ học', text:'Học viên nghỉ học chủ động xem lại record của buổi học đó (gửi trong group Zalo) để theo kịp bài. Lớp học không áp dụng bảo lưu số buổi, không hoàn tiền, không huỷ lớp.', note:'Chính sách không bảo lưu / không hoàn / không huỷ'}
+  ]}
+];
+
+const HOLIDAYS = {'2027-01-01':'Nghỉ · Tết Dương lịch','2027-01-02':'Nghỉ · Tết Dương lịch','2027-01-03':'Nghỉ · Tết Dương lịch'};
+const DOW = ['Chủ Nhật','Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy'];
+const pad = n => String(n).padStart(2,'0');
+const keyOf = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const fmt = k => { const [y,m,d] = k.split('-').map(Number); return `${DOW[new Date(y,m-1,d).getDay()]}, ${pad(d)}/${pad(m)}/${y}`; };
+const short = k => { const [,m,d] = k.split('-'); return `${d}/${m}`; };
+
+class Component extends DCLogic {
+  state = {sel:null, screen:this.props.startScreen ?? 'intro', track:'all'};
+
+  item(L) {
+    const t = TRACKS[L.tr], on = this.state.track === 'all' || this.state.track === L.tr;
+    return {
+      tag: t.name, num: L.part, title: L.title, tagColor: t.tag, textColor: t.text, lineColor: t.border,
+      style: `margin-top:6px;padding:9px 10px;border-radius:10px;background:${t.bg};box-shadow:inset 0 0 0 1px ${t.border};cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease,opacity .2s ease;opacity:${on?1:.22};${on?'':'pointer-events:none;'}`,
+      onClick: () => this.setState({sel: L.id})
+    };
+  }
+
+  buildMonth(year, m, label) {
+    const start = new Date(2026,11,21), end = new Date(2027,0,31);
+    const first = new Date(year, m, 1);
+    const cur = new Date(first); cur.setDate(1 - (first.getDay()+6)%7);
+    const weeks = [];
+    while (cur.getMonth() === m || cur < first) {
+      const days = [];
+      for (let i = 0; i < 7; i++) {
+        const d = new Date(cur), inMonth = d.getMonth() === m, inRange = d >= start && d <= end;
+        const items = inMonth ? LESSONS.filter(L => L.date === keyOf(d)).map(L => this.item(L)) : [];
+        days.push({
+          num: inMonth ? String(d.getDate()) : '', items, holiday: inMonth ? (HOLIDAYS[keyOf(d)] || '') : '',
+          numColor: items.length ? '#4A5F8C' : '#AEB8CC',
+          cellStyle: `min-height:110px;padding:8px 10px 10px;border-left:1px solid #E6ECF6;display:flex;flex-direction:column;background:${inMonth && inRange ? '#fff' : '#F7F9FD'};`
+        });
+        cur.setDate(cur.getDate()+1);
+      }
+      const ws = new Date(cur); ws.setDate(ws.getDate()-7);
+      const we = new Date(cur); we.setDate(we.getDate()-1);
+      const hasClass = days.some(d => d.items.length || d.holiday);
+      if (we >= start && ws <= end) weeks.push({days, time: hasClass ? '20:00\n–\n21:30' : '', timeBg: hasClass ? '#CFDDFB' : '#F7F9FD'});
+    }
+    return {label, weeks};
+  }
+
+  renderVals() {
+    const tk = this.state.track;
+    const chip = (id, label, swatch, color, border) => {
+      const on = tk === id;
+      return {label, swatch, onClick: () => this.setState({track: id}),
+        style: `display:flex;align-items:center;gap:8px;font-family:inherit;cursor:pointer;border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700;transition:transform .15s ease,background .15s ease;border:1.5px solid ${on ? color : border};background:${on ? '#fff' : '#fff'};color:${color};box-shadow:${on ? `0 0 0 3px ${border}` : 'none'};`};
+    };
+    const filters = [
+      chip('all','Tất cả lộ trình','#8FB0F2','#1B3A7A','#CFDDFB'),
+      ...Object.entries(TRACKS).map(([id,t]) => chip(id, `${t.name} (8 buổi)`, t.border, '#1B3A7A', t.border))
+    ];
+    const L = this.state.sel != null ? LESSONS[this.state.sel] : null;
+    let sel = null;
+    if (L) {
+      const t = TRACKS[L.tr];
+      const di = L.k ? 2*(L.k-1) + ((L.tr === 'E') === (L.skill === 'Speaking') ? 1 : 0) : -1;
+      const det = L.tr === 'X' ? DETAILS_X[di] : L.tr === 'E' ? DETAILS_E[di] : null;
+      sel = {
+        kicker: `${t.name} · ${L.part}`, name: L.title, when: `${fmt(L.date)} · 20:00 – 21:30`,
+        headBg: t.head, headColor: t.headText,
+        listLabel: `Lộ trình ${t.name} · ${t.sched}`,
+        hasDetail: !!det, learn: det ? det[0] : [], outcomes: det ? det[1] : [], milestone: det ? det[2] : '',
+        accent: t.tag, soft: t.bg, line: t.border,
+        sessions: LESSONS.filter(x => x.tr === L.tr).map(x => {
+          const cur = x.id === L.id;
+          return {date: short(x.date), tag: x.part, title: x.title, tagColor: t.ink || t.tag, weight: cur ? 800 : 500,
+            style: `display:grid;grid-template-columns:52px 96px 1fr;gap:12px;align-items:baseline;padding:10px 14px;border-radius:10px;cursor:pointer;background:${cur ? (t.soft || t.bg) : 'transparent'};box-shadow:${cur ? `inset 0 0 0 1px ${t.border}` : 'none'};`,
+            onClick: () => this.setState({sel: x.id})};
+        })
+      };
+    }
+    return {
+      months: [this.buildMonth(2026, 11, 'Tháng 12 / 2026'), this.buildMonth(2027, 0, 'Tháng 01 / 2027')],
+      weekdays: ['Thứ Hai','Thứ Ba','Thứ Tư','Thứ Năm','Thứ Sáu','Thứ Bảy','Chủ Nhật'],
+      filters, open: !!sel, sel,
+      isIntro: this.state.screen === 'intro', isTable: this.state.screen === 'table', isRules: this.state.screen === 'rules',
+      ruleGroups: RULES,
+      goTable: () => this.setState({screen: 'table'}),
+      goRules: () => this.setState({screen: 'rules'}),
+      goIntro: () => this.setState({screen: 'intro', sel: null}),
+      close: () => this.setState({sel: null}),
+      stop: e => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>
